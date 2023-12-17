@@ -6,7 +6,7 @@ from io import BytesIO
 from utils.image_processing import process_image
 from utils.results_generator import show_results
 from utils.spinner import loading_spinner
-from streamlit_lottie import st_lottie
+# from streamlit_lottie import st_lottie
 
 
 def main():
