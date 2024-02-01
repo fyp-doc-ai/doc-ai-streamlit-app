@@ -57,8 +57,6 @@ def show_model_comparison_page():
     
     st.plotly_chart(fig_radar_ocr)
 
-
-
     st.subheader("Metrics Line Chart - OCR Models")
     st.write("""
     The Metrics Line Chart illustrates the trend of OCR model performance across Accuracy, Precision, and Recall. Each line represents a specific metric, and the x-axis displays the OCR models. This dynamic chart allows for a quick comparison of the models' consistency in performance over different evaluation criteria. It is evident that Tesseract and Google Vision maintain high levels of accuracy throughout the evaluation [1].
