@@ -1,5 +1,3 @@
-# PrivacyInformation.py
-
 import streamlit as st
 
 def show_privacy_information():

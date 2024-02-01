@@ -1,5 +1,3 @@
-# FeedbackForm.py
-
 import streamlit as st
 
 def show_feedback_form():

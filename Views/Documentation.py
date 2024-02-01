@@ -1,5 +1,3 @@
-# Expanded Documentation.py
-
 import streamlit as st
 
 def show_documentation():
