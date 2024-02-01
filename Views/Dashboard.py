@@ -5,6 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+import plotly.express as px
 
 def show_model_comparison_page():
     st.title("Model Comparison - SRIDOC")
@@ -15,8 +16,7 @@ def show_model_comparison_page():
     [1] Reference for OCR models.
     [2] Reference for LiLT models.
     [3] Reference for Streamlit.
-    [4] Reference for Matplotlib.
-    [5] Reference for Seaborn.
+    [4] Reference for Plotly.
     """
 
     # OCR Model Comparison Data (replace with actual metrics)
@@ -50,36 +50,41 @@ def show_model_comparison_page():
     For more information on OCR models and their capabilities, refer to [1] and [3].
     """)
 
-    st.subheader("Metrics Radar Chart")
+    st.subheader("Metrics Radar Chart - OCR Models")
+    st.write("""
+    The Metrics Radar Chart visually compares the performance of various OCR models, including Tesseract, Google Vision, TrOCR, MMOCR, and YOLO. Each spoke in the radar chart represents a metric (Accuracy, Precision, Recall), and the length of the spokes illustrates the corresponding metric values for each model. Tesseract and Google Vision exhibit high accuracy, while TrOCR excels in precision. This chart provides a holistic view of each model's strengths across different evaluation criteria [1].
+    """)
 
-    # Create a radar chart for OCR models
-    fig_radar_ocr, ax_radar_ocr = plt.subplots(figsize=(8, 8), subplot_kw=dict(polar=True))
+    # Create a radar chart for OCR models using Plotly
+    fig_radar_ocr = px.line_polar(ocr_model_df, r=ocr_model_df.iloc[0, 1:].values.tolist() + [ocr_model_df.iloc[0, 1]], theta=ocr_model_df.columns[1:].tolist() + [ocr_model_df.columns[1]])
+    fig_radar_ocr.update_layout(polar=dict(radialaxis=dict(visible=False)))
     
-    categories = list(ocr_model_df.columns[1:])
-    values = ocr_model_df.loc[0].drop("Model").values.flatten().tolist()
-    values += values[:1]
+    st.plotly_chart(fig_radar_ocr)
 
-    angles = [n / float(len(categories)) * 2 * np.pi for n in range(len(categories))]
-    angles += angles[:1]
 
-    ax_radar_ocr.fill(angles, values, color="skyblue", alpha=0.25)
-    ax_radar_ocr.set_yticklabels([])
-    ax_radar_ocr.set_xticks(angles[:-1])
-    ax_radar_ocr.set_xticklabels(categories)
 
-    st.pyplot(fig_radar_ocr)
+    st.subheader("Metrics Line Chart - OCR Models")
+    st.write("""
+    The Metrics Line Chart illustrates the trend of OCR model performance across Accuracy, Precision, and Recall. Each line represents a specific metric, and the x-axis displays the OCR models. This dynamic chart allows for a quick comparison of the models' consistency in performance over different evaluation criteria. It is evident that Tesseract and Google Vision maintain high levels of accuracy throughout the evaluation [1].
+    """)
 
-    st.subheader("Metrics Line Chart")
 
-    # Create a line chart for OCR models
-    fig_line_ocr, ax_line_ocr = plt.subplots(figsize=(8, 4))
-    sns.lineplot(x="Model", y="Accuracy", data=ocr_model_df, marker='o', label="Accuracy", ax=ax_line_ocr)
-    sns.lineplot(x="Model", y="Precision", data=ocr_model_df, marker='o', label="Precision", ax=ax_line_ocr)
-    sns.lineplot(x="Model", y="Recall", data=ocr_model_df, marker='o', label="Recall", ax=ax_line_ocr)
-    ax_line_ocr.set(title="OCR Model Metrics Over Models", ylabel="Metrics")
-    ax_line_ocr.legend(loc="upper left")
+    # Create a line chart for OCR models using Plotly
+    fig_line_ocr = px.line(ocr_model_df, x="Model", y=["Accuracy", "Precision", "Recall"], markers=True, labels={"value": "Metrics", "variable": "Metrics"})
+    fig_line_ocr.update_layout(title="OCR Model Metrics Over Models", yaxis_title="Metrics")
+    
+    st.plotly_chart(fig_line_ocr)
 
-    st.pyplot(fig_line_ocr)
+    st.subheader("Metrics Bar Chart - OCR Models")
+    st.write("""
+    The Metrics Bar Chart provides a grouped comparison of OCR model metrics, including Accuracy, Precision, and Recall. Each bar represents a specific metric, and the different colors within each bar indicate the performance of individual models. This chart offers a detailed view of the models' comparative strengths and weaknesses across various evaluation criteria. Tesseract and Google Vision stand out for their high accuracy, while TrOCR excels in precision [1].
+    """)
+
+    # Create a bar chart for OCR models using Plotly
+    fig_bar_ocr = px.bar(ocr_model_df, x="Model", y=["Accuracy", "Precision", "Recall"], barmode="group", labels={"value": "Metrics", "variable": "Metrics"})
+    fig_bar_ocr.update_layout(title="OCR Model Metrics Comparison", yaxis_title="Metrics")
+    
+    st.plotly_chart(fig_bar_ocr)
 
     # LiLT Model Comparison
     st.header("LiLT Model Comparison")
@@ -92,36 +97,59 @@ def show_model_comparison_page():
     For more details on LiLT models and their language transfer capabilities, refer to [2] and [3].
     """)
 
-    st.subheader("Metrics Radar Chart")
+    st.subheader("Metrics Radar Chart - LiLT Models")
+    st.write("""
+    The Metrics Radar Chart for LiLT models showcases the performance metrics for language identification and transfer. English, Italian, Chinese, and Sinhala languages are evaluated for Accuracy, Precision, and Recall. The radar chart illustrates LiLT's adaptability across languages, with consistent and robust performance. The longer spokes indicate higher metric values, emphasizing LiLT's effectiveness in language-specific tasks [2].
+    """)
 
-    # Create a radar chart for LiLT models
-    fig_radar_lilt, ax_radar_lilt = plt.subplots(figsize=(8, 8), subplot_kw=dict(polar=True))
+
+    # Create a radar chart for LiLT models using Plotly
+    fig_radar_lilt = px.line_polar(lilt_model_df, r=lilt_model_df.iloc[0, 1:].values.tolist() + [lilt_model_df.iloc[0, 1]], theta=lilt_model_df.columns[1:].tolist() + [lilt_model_df.columns[1]])
+    fig_radar_lilt.update_layout(polar=dict(radialaxis=dict(visible=False)))
     
-    categories = list(lilt_model_df.columns[1:])
-    values = lilt_model_df.loc[0].drop("Language").values.flatten().tolist()
-    values += values[:1]
+    st.plotly_chart(fig_radar_lilt)
 
-    angles = [n / float(len(categories)) * 2 * np.pi for n in range(len(categories))]
-    angles += angles[:1]
+    st.subheader("Metrics Line Chart - LiLT Models")
+    st.write("""
+    The Metrics Line Chart for LiLT models depicts the transition in model performance metrics as LiLT adapts from training on English, Italian, and Chinese to handling Sinhala language documents. The x-axis represents different languages, and each line represents a specific metric (Accuracy, Precision, Recall). This dynamic chart provides insights into LiLT's efficiency in language transfer tasks and its ability to maintain consistent performance across diverse linguistic challenges [2].
+    """)
 
-    ax_radar_lilt.fill(angles, values, color="lightcoral", alpha=0.25)
-    ax_radar_lilt.set_yticklabels([])
-    ax_radar_lilt.set_xticks(angles[:-1])
-    ax_radar_lilt.set_xticklabels(categories)
+    # Create a line chart for LiLT models using Plotly
+    fig_line_lilt = px.line(lilt_model_df, x="Language", y=["Accuracy", "Precision", "Recall"], markers=True, labels={"value": "Metrics", "variable": "Metrics"})
+    fig_line_lilt.update_layout(title="LiLT Model Metrics Over Languages", yaxis_title="Metrics")
+    
+    st.plotly_chart(fig_line_lilt)
 
-    st.pyplot(fig_radar_lilt)
+    st.subheader("Metrics Bar Chart - LiLT Models")
+    st.write("""
+    The Metrics Bar Chart for LiLT models presents a grouped comparison of Accuracy, Precision, and Recall across different languages. Each bar represents a specific metric, and the grouped bars allow for a quick comparison of LiLT's performance across languages. This chart underscores LiLT's consistent and competitive metrics across diverse languages, showcasing its effectiveness in language identification and transfer tasks [2].
+    """)
 
-    st.subheader("Metrics Line Chart")
+    # Create a bar chart for LiLT models using Plotly
+    fig_bar_lilt = px.bar(lilt_model_df, x="Language", y=["Accuracy", "Precision", "Recall"], barmode="group", labels={"value": "Metrics", "variable": "Metrics"})
+    fig_bar_lilt.update_layout(title="LiLT Model Metrics Comparison", yaxis_title="Metrics")
+    
+    st.plotly_chart(fig_bar_lilt)
 
-    # Create a line chart for LiLT models
-    fig_line_lilt, ax_line_lilt = plt.subplots(figsize=(8, 4))
-    sns.lineplot(x="Language", y="Accuracy", data=lilt_model_df, marker='o', label="Accuracy", ax=ax_line_lilt)
-    sns.lineplot(x="Language", y="Precision", data=lilt_model_df, marker='o', label="Precision", ax=ax_line_lilt)
-    sns.lineplot(x="Language", y="Recall", data=lilt_model_df, marker='o', label="Recall", ax=ax_line_lilt)
-    ax_line_lilt.set(title="LiLT Model Metrics Over Languages", ylabel="Metrics")
-    ax_line_lilt.legend(loc="upper left")
+    st.subheader("Overall Metrics Heat Map")
 
-    st.pyplot(fig_line_lilt)
+    # Combine OCR and LiLT metrics for an overall comparison
+    overall_metrics_df = pd.concat([ocr_model_df.set_index("Model"), lilt_model_df.set_index("Language")], axis=0)
+
+    # Create a heat map for overall metrics using Plotly
+    fig_heatmap = px.imshow(overall_metrics_df, labels=dict(index="Model/Language", variable="Metrics", value="Value"), color_continuous_scale="Viridis")
+    fig_heatmap.update_layout(title="Overall Metrics Heat Map")
+    
+    st.plotly_chart(fig_heatmap)
+
+    st.subheader("Raw Metrics Data")
+
+    # Display raw metrics data in a table
+    st.write("OCR Model Metrics:")
+    st.write(ocr_model_df)
+
+    st.write("LiLT Model Metrics:")
+    st.write(lilt_model_df)
 
     st.markdown(references, unsafe_allow_html=True)
 

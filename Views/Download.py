@@ -28,8 +28,7 @@ def show_download_page():
     download_button = st.button(f"Download SRIDOC {selected_version}")
 
     # Animation
-    st.header("SRIDOC in Action")
-    st.video("sridoc_animation.mp4", start_time=0)
+    # st.header("SRIDOC in Action")
 
     # Add more content as needed...
 
