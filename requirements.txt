@@ -1,3 +1,2 @@
-matplotlib
 plotly
 streamlit_option_menu
