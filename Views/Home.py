@@ -33,7 +33,7 @@ def view_home():
 
                 # Make API call
                 files = {"file": ("image.jpg", image_data, "image/jpeg")}
-                response = requests.post("https://kavg-sri-doc.hf.space", files=files)
+                response = requests.post("https://kavg-sri-doc.hf.space/submit-doc", files=files)
 
                 # Simulate processing time
                 time.sleep(2)
