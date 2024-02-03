@@ -29,7 +29,7 @@ if selected == 'Dashboard':
 elif selected == 'Analysis':
     Data.show_data_analysis_page()
 
-elif selected == 'Documentation':
+elif selected == 'Read Docs':
     Documentation.show_documentation()
 
 elif selected == 'Download':
