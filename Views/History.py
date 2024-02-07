@@ -7,15 +7,18 @@ import os
 from utils.display_entities import displayEntities
 from PIL import Image
 
+
 def load_results_from_file(file_path):
     # Load saved results from the specified file
     with open(file_path, "r") as file:
         saved_results = json.load(file)
     return saved_results
 
+
 def load_image_from_file(image_path):
     # Load image from the specified file
     return Image.open(image_path)
+
 
 def view_history_results():
     st.subheader("History Results")
@@ -43,7 +46,9 @@ def view_history_results():
         uploaded_image = load_image_from_file(uploaded_image_path)
 
         # Create DataFrames
-        pred_relations_df = pd.DataFrame(decoded_pred_relations, columns=["Question", "Answer"])
+        pred_relations_df = pd.DataFrame(
+            decoded_pred_relations, columns=["Question", "Answer"]
+        )
         entities_df = pd.DataFrame(entities, columns=["start", "end", "label"])
         token_labels_df = pd.DataFrame(token_labels, columns=["label"])
 
@@ -57,20 +62,31 @@ def view_history_results():
 
         # Label each bar with the correct category
         id2label = {
-            0: 'O',
-            1: 'B-HEADER',
-            2: 'I-HEADER',
-            3: 'B-QUESTION',
-            4: 'I-QUESTION',
-            5: 'B-ANSWER',
-            6: 'I-ANSWER'
+            0: "O",
+            1: "B-HEADER",
+            2: "I-HEADER",
+            3: "B-QUESTION",
+            4: "I-QUESTION",
+            5: "B-ANSWER",
+            6: "I-ANSWER",
         }
 
-        plt.xticks(list(id2label.keys()), [id2label[idx] for idx in label_counts.index], rotation=45, ha="right")
+        plt.xticks(
+            list(id2label.keys()),
+            [id2label[idx] for idx in label_counts.index],
+            rotation=45,
+            ha="right",
+        )
 
         for bar, count in zip(bars, label_counts.values):
             yval = bar.get_height()
-            ax.text(bar.get_x() + bar.get_width()/2, yval, round(count, 2), ha='center', va='bottom')
+            ax.text(
+                bar.get_x() + bar.get_width() / 2,
+                yval,
+                round(count, 2),
+                ha="center",
+                va="bottom",
+            )
 
         # Display the plot in Streamlit
         st.pyplot(fig)
@@ -85,17 +101,29 @@ def view_history_results():
         st.bar_chart(entity_type_counts)
 
         # Display identified entity table
-        decoded_entity_df = pd.DataFrame(decoded_entities, columns=['Entity Type', 'Entity'])
+        decoded_entity_df = pd.DataFrame(
+            decoded_entities, columns=["Entity Type", "Entity"]
+        )
         st.subheader("Identified entities")
 
         # Use data editor to make the table editable and dynamic
-        st.data_editor(decoded_entity_df, key="identified_entities", num_rows=len(decoded_entity_df))
+        st.data_editor(
+            decoded_entity_df,
+            key="identified_entities",
+            use_container_width=True,
+            num_rows="dynamic"
+        )
 
         # Display tables
         st.subheader("Predicted Relations")
 
         # Use data editor to make the table editable and dynamic
-        st.data_editor(pred_relations_df, key="predicted_relations", num_rows=len(pred_relations_df))
+        st.data_editor(
+            pred_relations_df,
+            key="predicted_relations",
+            use_container_width=True,
+            num_rows="dynamic"
+        )
 
     else:
         st.warning("No history files found.")
