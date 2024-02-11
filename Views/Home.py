@@ -11,8 +11,7 @@ from streamlit_option_menu import option_menu
 
 def view_home():
 
-    st.markdown("<p style='text-align: center; color: grey; font-size: small; font-style: italic;'> Introducing our cutting-edge mobile application, equipped with the latest models for digitizing and extracting question-answer pairs from forms in both English and Sinhala languages. Our advanced framework ensures optimal outcomes, leveraging state-of-the-art models to deliver the highest accuracy.</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: grey; font-size: small; font-style: italic;'> Additionally, the application provides users with the ability to offer valuable feedback, contributing to continuous improvement. We prioritize the full privacy of your data through innovative techniques like federated learning, ensuring a secure and personalized experience. Welcome to a new era of form digitization and extraction, where efficiency meets privacy in the palm of your hand.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: grey; font-size: small; font-style: italic;'> Introducing our cutting-edge mobile application, equipped with the latest models for digitizing and extracting question-answer pairs from forms in both English and Sinhala languages. Our advanced framework ensures optimal outcomes, leveraging state-of-the-art models to deliver the highest accuracy. The application provides users with the ability to offer valuable feedback, contributing to continuous improvement. We prioritize the full privacy of your data through innovative techniques like federated learning, ensuring a secure and personalized experience. Welcome to a new era of form digitization and extraction, where efficiency meets privacy in the palm of your hand.</p>", unsafe_allow_html=True)
 
     row0_spacer1, row0_1, row0_spacer2, row0_2, row0_spacer3 = st.columns((.1, 2.3, .1, 1.3, .1))
     with row0_1:

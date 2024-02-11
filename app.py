@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(page_title="SRIDOC", page_icon="Logo.png", layout="wide")
 
 
-from Views import Dashboard, Home, Data, Documentation, Download, Feedback, Privacy, History
+from Views import LILT, Home, OCR, Documentation, Download, Feedback, Privacy, History
 from streamlit_option_menu import option_menu
 
 row0_spacer1, row0_1, row0_spacer2, row0_2, row0_spacer3 = st.columns((3, 1, 2, 1, 3))
@@ -12,7 +12,7 @@ with row0_spacer2:
 st.markdown("<h5 style='text-align: center; color: grey;'>Comprehensive Handwritten Document Digitization Solution!</h5>", unsafe_allow_html=True)
 
 
-selected = option_menu(None, ["Home", "Dashboard", 'Analysis', 'Read Docs', 'Download', 'Feedback', 'Privacy', 'History'],                        
+selected = option_menu(None, ["Home", "LILT", 'OCR', 'Docs', 'APK', 'Feedback', 'Privacy', 'History'],                        
     icons=['house', 'bar-chart-line-fill', 'activity', 'list-task', 'cloud-download', 'chat-dots', 'shield-lock', 'clock-history'],
     menu_icon="cast", default_index=0, orientation="horizontal",
     styles={
@@ -23,16 +23,16 @@ selected = option_menu(None, ["Home", "Dashboard", 'Analysis', 'Read Docs', 'Dow
         })
 
 
-if selected == 'Dashboard':
-    Dashboard.show_model_comparison_page()
+if selected == 'LILT':
+    LILT.show_LiLT_Results()
 
-elif selected == 'Analysis':
-    Data.show_data_analysis_page()
+elif selected == 'OCR':
+    OCR.show_OCR_Results()
 
-elif selected == 'Read Docs':
+elif selected == 'Docs':
     Documentation.show_documentation()
 
-elif selected == 'Download':
+elif selected == 'APK':
     Download.show_download_page()
 
 elif selected == 'Feedback':

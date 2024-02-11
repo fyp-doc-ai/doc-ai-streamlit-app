@@ -1,49 +1,67 @@
 import streamlit as st
 
 def show_privacy_information():
-    st.title("Privacy Information - SRIDOC")
+    # Privacy Information...
+    st.title("Privacy Information")
 
     st.write("""
-    At SRIDOC, we are committed to ensuring the privacy and security of your data. This privacy information outlines the measures we take to preserve your privacy and maintain the security of your information. Please read the following carefully to understand how we handle your data.
+    At SRIDOC, we prioritize your privacy and are dedicated to ensuring the security of your data. Our comprehensive privacy guidelines are designed to provide clarity, transparency, and user control. Below, we delve into the details of our privacy practices across various facets:
 
-    **Data Collection and Usage:**
-    We collect minimal user data necessary for the functioning of our application. This may include personal information such as name and email, but we do not collect any data without your explicit consent. The information collected is used solely for providing and improving our services.
+    **1. Data Collection and Usage:**
+    - We prioritize collecting the least amount of user data necessary for a smooth application experience.
+    - Personal information, such as names and email addresses, is acquired only with explicit consent from users.
+    - The collected data serves the sole purpose of providing services and continual improvement.
+    - User data is not shared, sold, or leased to third parties.
 
-    **Security Measures:**
-    We employ industry-standard security measures to protect your data from unauthorized access, disclosure, alteration, and destruction. Our infrastructure is designed to meet high-security standards, and we regularly update our systems to address emerging security threats.
+    **2. Security Measures:**
+    - Our security protocols adhere to industry standards, implementing robust measures to safeguard against unauthorized access, disclosure, and data alterations.
+    - We maintain a state-of-the-art infrastructure, routinely updated to stay ahead of emerging security threats.
+    - Regular security audits are conducted to ensure the highest level of protection for user data.
 
-    **Data Encryption:**
-    All data transmitted between your device and our servers is encrypted using secure protocols. This ensures that your information remains confidential and protected during transfer.
+    **3. Data Encryption:**
+    - All data transmitted between user devices and our servers undergoes encryption using secure protocols.
+    - This meticulous encryption process ensures the highest level of confidentiality during data transfer.
+    - We use industry-approved encryption algorithms to provide robust protection for your data.
 
-    **User Authentication:**
-    Access to your account and data is restricted through robust user authentication mechanisms. We implement secure login processes to verify the identity of users and prevent unauthorized access.
+    **4. User Authentication:**
+    - Access to user accounts and data is tightly controlled through advanced user authentication mechanisms.
+    - Secure login processes are implemented to verify user identities, providing protection against any unauthorized access attempts.
+    - Multi-factor authentication options are available to enhance user account security.
 
-    **Third-Party Integrations:**
-    We may use third-party services for specific functionalities within our application. These services adhere to strict privacy and security standards. Before integrating any third-party service, we thoroughly vet their practices to ensure alignment with our commitment to user privacy.
+    **5. Third-Party Integrations:**
+    - We may use third-party services for specific functionalities within our application.
+    - These services adhere to strict privacy and security standards and are thoroughly vetted before integration.
 
-    **Data Ownership:**
-    You own your data. We do not sell, rent, or lease your personal information to third parties. Your data is used exclusively for the purpose of providing and improving our services. You have the right to access, correct, or delete your data at any time.
+    **6. Data Ownership:**
+    - Users own their data. We do not claim ownership of any user-generated content within the application.
+    - Users have the right to access, correct, or delete their data at any time.
 
-    **Data Retention:**
-    We retain user data only for as long as it is necessary to fulfill the purposes for which it was collected. Once the data is no longer needed, it is securely deleted from our systems.
+    **7. Data Retention:**
+    - User data is retained only for as long as it is necessary to fulfill the purposes for which it was collected.
+    - Once the data is no longer needed, it is securely deleted from our systems.
 
-    **Anonymous Analytics:**
-    We may collect anonymized usage data for analytics purposes. This information helps us understand how users interact with our application, allowing us to enhance user experience. This data does not contain personally identifiable information.
+    **8. Anonymous Analytics:**
+    - We may collect anonymized usage data for analytics purposes to improve user experience.
+    - This data does not contain personally identifiable information.
 
-    **Updates and Communication:**
-    We may send occasional updates or important information related to our services. You have the option to opt-out of non-essential communications.
+    **9. Updates and Communication:**
+    - Users may receive occasional updates or important information related to our services.
+    - Users have the option to opt-out of non-essential communications.
 
-    **Compliance with Laws:**
-    We comply with all applicable data protection laws and regulations. Our privacy practices are in accordance with global standards, including the General Data Protection Regulation (GDPR).
+    **10. Compliance with Laws:**
+    - SRIDOC diligently adheres to all applicable data protection laws and regulations.
+    - Our privacy practices align with global standards, including the General Data Protection Regulation (GDPR).
 
-    **Continuous Improvement:**
-    We are committed to continually improving our privacy and security practices. We regularly review and update our policies to adapt to evolving privacy challenges and technological advancements.
+    **11. Continuous Improvement:**
+    - We are committed to continually improving our privacy and security practices.
+    - Regular reviews and updates to policies are conducted to adapt to evolving privacy challenges and technological advancements.
 
-    **Contact Us:**
-    If you have any questions or concerns regarding your privacy and data security, please contact us at privacy@sridoc.com.
-
-    Thank you for entrusting SRIDOC with your data. We appreciate the trust you place in us and remain dedicated to safeguarding your privacy.
+    For any questions or concerns about your privacy and data security, our dedicated team is available at privacy@sridoc.com.
+    We deeply appreciate the trust you place in SRIDOC and remain steadfast in our commitment to ensuring the utmost privacy and security of your data.
     """)
+
+
+
 
 if __name__ == "__main__":
     show_privacy_information()
